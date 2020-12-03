@@ -1,0 +1,4 @@
+book1 author1 publisher1 BELARUS 2019 207 24 HARD
+book2 author2 publisher2 USA 2011 104 45 SOFT
+book3 author3 publisher3 RUSSIA 2012 603 100 HARD
+book4 author4 publisher4 GB 2014 202 19 SPRING
