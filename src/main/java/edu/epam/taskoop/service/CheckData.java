@@ -1,12 +1,10 @@
 package edu.epam.taskoop.service;
 
-import edu.epam.taskoop.dao.BookDao;
 import edu.epam.taskoop.entity.Book;
 import edu.epam.taskoop.entity.BookShop;
 
-import java.util.ArrayList;
-
 public class CheckData {
+
     public boolean isBookExist(BookShop bookShop, Book book){
         return bookShop.getBooks().contains(book);
     }
@@ -21,4 +19,6 @@ public class CheckData {
                 && book.getPrice() >0
                 && book.getBindingType() != null);
     }
+
+    public boolean isEmpty(BookShop bookShop){ return bookShop.getBooks().size() == 0 ? true : false; }
 }

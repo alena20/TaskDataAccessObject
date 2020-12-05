@@ -2,29 +2,36 @@ package edu.epam.taskoop.service;
 
 import edu.epam.taskoop.entity.*;
 import edu.epam.taskoop.exception.DaoException;
+import edu.epam.taskoop.exception.ServiceException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class BookShopServiceTest {
     BookShopService bookShopService = new BookShopService();
     BookShop bookShop = BookShop.getInstance();
 
     @Test
-    public void isAdd() throws DaoException {
+    public void isAdd() throws DaoException, ServiceException {
         Book book = customBookInfo("someName", "someAuthors", "somePublisher", "GB",
                 2010, 570, 150, "HARD");
-        boolean result = bookShopService.add(bookShop,book);
-        assertTrue(result);
+        List<Book> expected = new ArrayList<>();
+        expected.add(book);
+        List<Book> result = bookShopService.add(book);
+        Assert.assertEquals(result, expected);
     }
 
     @Test
-    public void isDelete() throws DaoException{
+    public void isDelete() throws DaoException, ServiceException {
         Book book = customBookInfo("someName", "someAuthors", "somePublisher", "GB",
                 2010, 570, 150, "HARD");
-        bookShopService.add(bookShop,book);
-        boolean result = bookShopService.delete(bookShop,book);
-        assertTrue(result);
+        List<Book> expected = new ArrayList<>();
+        expected.add(book);
+        List<Book> result = bookShopService.delete(book);
+        Assert.assertEquals(result, expected);
     }
 
     public Book customBookInfo(String name, String authors, String publisherName, String country, int year, int pages, int price, String bind){

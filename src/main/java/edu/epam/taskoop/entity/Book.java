@@ -1,5 +1,7 @@
 package edu.epam.taskoop.entity;
 
+import java.util.Comparator;
+
 public class Book {
     private static int Id = 1;
     private final int id = Id++;
@@ -70,9 +72,6 @@ public class Book {
     public void setBindingType(BindingType bindingType) {
         this.bindingType = bindingType;
     }
-    public <T> T getParameretSearch(T parameter){
-        return parameter;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -113,5 +112,45 @@ public class Book {
         sb.append(", bindingType=").append(bindingType);
         sb.append('}');
         return sb.toString();
+    }
+
+    public static class BookAuthorsComparator implements Comparator<Book> {
+        @Override
+        public int compare(Book o1, Book o2) {
+            return o1.getAuthors().compareTo(o2.getAuthors());
+        }
+    }
+
+    public static class BookIdComparator implements Comparator<Book> {
+        @Override
+        public int compare(Book o1, Book o2) {
+            return o1.getPagesCount() - o2.getPagesCount();
+        }
+    }
+
+    public static class BookPagesComparator implements Comparator<Book> {
+        @Override
+        public int compare(Book o1, Book o2) {
+            return o1.getPagesCount() - o2.getPagesCount();
+        }
+    }
+
+    public static class BookPublisherNameComparator implements Comparator<Book> {
+        @Override
+        public int compare(Book o1, Book o2) {
+            return o1.getPublisher().getName().compareTo(o2.getPublisher().getName());
+        }
+    }
+
+    public static class BookTitleComparator implements Comparator<Book> {
+        @Override
+        public int compare(Book o1, Book o2) {
+            return o1.getName().compareTo(o2.getName());
+        }
+    }
+
+    public static class BookYearComparator implements Comparator<Book> {
+        @Override
+        public int compare(Book o1, Book o2) { return o1.getPublisher().getYear() - o2.getPublisher().getYear(); }
     }
 }

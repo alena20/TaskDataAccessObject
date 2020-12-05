@@ -4,6 +4,7 @@ import edu.epam.taskoop.dao.BookDao;
 import edu.epam.taskoop.entity.*;
 import edu.epam.taskoop.exception.DaoException;
 import edu.epam.taskoop.exception.FileReaderException;
+import edu.epam.taskoop.exception.ServiceException;
 import edu.epam.taskoop.reader.FileReader;
 import edu.epam.taskoop.service.BookShopService;
 import edu.epam.taskoop.service.SortService;
@@ -17,25 +18,27 @@ import java.util.List;
 public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String [] args) throws FileReaderException, DaoException {
+    public static void main(String [] args) throws FileReaderException, DaoException, ServiceException {
         FileReader reader = new FileReader();
         BookShop bookShop = new BookShop((ArrayList<Book>) reader.readFromFile());
         logger.info("books "+bookShop.getBooks().toString());
         BookShopService bookShopService = new BookShopService();
         Book book = customBookInfo("someName", "someAuthors", "somePublisher", "GB",
                 2010, 570, 150, "HARD");
-        bookShopService.add(bookShop,book);
-        bookShopService.update(book, "someDifferentName");
-        bookShopService.delete(bookShop,book);
+        bookShopService.add(book);
+        bookShopService.update("someName", "someDifferentName");
+        bookShopService.delete(book);
         SortService sortService = new SortService();
-        ArrayList<Book> list1,list2,list3,list4 = new ArrayList<Book>();
-        list1 = (ArrayList<Book>) sortService.sortByName(bookShop);
+        ArrayList<Book> list1,list2,list3,list4,list5 = new ArrayList<Book>();
+        list1 = (ArrayList<Book>) sortService.sortByName();
         logger.info("sortByName "+list1.toString());
-        list2 = (ArrayList<Book>) sortService.sortByAuthors(bookShop);
+        list2 = (ArrayList<Book>) sortService.sortByAuthors();
         logger.info("sortByAuthors "+list1.toString());
-        list3 = (ArrayList<Book>) sortService.sortByPrice(bookShop);
+        list3 = (ArrayList<Book>) sortService.sortByPagesCount();
         logger.info("sortByPrice "+list1.toString());
-        list4 = (ArrayList<Book>) sortService.sortByBindingType(bookShop);
+        list4 = (ArrayList<Book>) sortService.sortBooksByPublisherName();
+        logger.info("sortByBindingType "+list1.toString());
+        list5 = (ArrayList<Book>) sortService.sortBooksByYear();
         logger.info("sortByBindingType "+list1.toString());
     }
 
