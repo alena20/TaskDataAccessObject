@@ -2,7 +2,6 @@ package edu.epam.taskoop.dao;
 
 import edu.epam.taskoop.entity.Book;
 import edu.epam.taskoop.entity.BookShop;
-import edu.epam.taskoop.service.CheckData;
 import edu.epam.taskoop.exception.DaoException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

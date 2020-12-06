@@ -6,9 +6,7 @@ import edu.epam.taskoop.entity.BookShop;
 import edu.epam.taskoop.exception.ServiceException;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SortService {
     BookDao bookDao = new BookDao();

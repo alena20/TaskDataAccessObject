@@ -1,6 +1,5 @@
 package edu.epam.taskoop.main;
 
-import edu.epam.taskoop.dao.BookDao;
 import edu.epam.taskoop.entity.*;
 import edu.epam.taskoop.exception.DaoException;
 import edu.epam.taskoop.exception.FileReaderException;
@@ -8,12 +7,10 @@ import edu.epam.taskoop.exception.ServiceException;
 import edu.epam.taskoop.reader.FileReader;
 import edu.epam.taskoop.service.BookShopService;
 import edu.epam.taskoop.service.SortService;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
