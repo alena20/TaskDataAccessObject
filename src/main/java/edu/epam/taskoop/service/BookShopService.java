@@ -12,8 +12,8 @@ import java.util.List;
 
 public class BookShopService {
     private static final Logger logger = LogManager.getLogger(BookShopService.class);
-    CheckData checkData = new CheckData();
-    BookDao bookDao = new BookDao();
+    private CheckData checkData = new CheckData();
+    private BookDao bookDao = new BookDao();
 
     public List<Book> add(Book book) throws ServiceException {
         if (!checkData.isDataCorrect(book)) {

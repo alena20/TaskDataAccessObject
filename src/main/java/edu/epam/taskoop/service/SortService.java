@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SortService {
-    BookDao bookDao = new BookDao();
-    BookShop bookShop = BookShop.getInstance();
-    CheckData checkData = new CheckData();
+    private BookDao bookDao = new BookDao();
+    private BookShop bookShop = BookShop.getInstance();
+    private CheckData checkData = new CheckData();
 
     public List<Book> sortBookById() throws ServiceException{
         List<Book> resultList = new ArrayList<>();

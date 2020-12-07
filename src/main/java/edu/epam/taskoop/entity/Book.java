@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class Book {
     private static int Id = 1;
-    private final int id = Id++;
+    private int id = Id++;
     private String name;
     private String authors;
     private Publisher publisher;
@@ -24,6 +24,8 @@ public class Book {
     }
 
     public int getId(){ return id;}
+
+    public void setId(int id){ this.id = id;}
 
     public String getName() {
         return name;
